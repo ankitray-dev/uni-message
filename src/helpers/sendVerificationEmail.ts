@@ -1,6 +1,6 @@
 import { resend } from "@/lib/resend";
 import VerificationEmail from "../../emails/verificationEmail";
-import { apiResponse } from "@/types/apiResponse";
+import { apiResponse } from "@/types/ApiResponse";
 
 export async function sendVerificationEmai(
     email: string,
@@ -10,7 +10,7 @@ export async function sendVerificationEmai(
     try {
         const data = await resend.emails.send({
             from: 'Acme <onboarding@resend.dev>',
-            to: ['arlogomaker@gmail.com'],
+            to: email,
             subject: 'UNI-Message | Verifiaction code.',
             react: VerificationEmail({username, otp: verifyCode}),
           });
